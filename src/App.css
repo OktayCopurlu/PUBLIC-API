@@ -16,22 +16,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 700px !important;
-  min-height: 500px;
+  max-width: 800px !important;
+  min-height: 600px;
 }
 .container:hover{
   box-shadow: 4px 4px 10px white;
 }
 .table{
-  max-width: 500px;
+  max-width: 620px;
   color: white;
-  font-size: 28px;
+  font-size: 23px;
+}
+td,th{
+  border: 1px solid white;
 }
 td:hover,th:hover{
   background-color: #2e384b;
 }
 input{
   width: 300px;
+ 
 }
 button{
   min-width:120px
@@ -49,5 +53,7 @@ button:hover{
 
 .navbar-link:hover{
   background-color: #2e384b;
-
+}
+.temperature{
+  font-size:larger
 }
