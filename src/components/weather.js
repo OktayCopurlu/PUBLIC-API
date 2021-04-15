@@ -20,7 +20,9 @@ const Weather = () => {
 
   useEffect(() => {
     const getReport = async () => {
+
       //getting data
+      try{
       const response = await fetch(
         "https://api.weatherbit.io/v2.0/current?&city=" +
           city +
@@ -36,9 +38,12 @@ const Weather = () => {
         setReportTime(city.ob_time);
         return city
       });
+      }catch (e) {
+        console.log("that failed", e); 
+    }
     };
     getReport();
-  }, [show]);
+  }, [show,city,country]);
 
   return (
     <div  className="container">
