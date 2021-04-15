@@ -12,6 +12,8 @@ const Weather = () => {
   const [temp, setTemp] = useState(); //getting temp
   const [cityCode, setCityCode] = useState(); //getting city code
   const [reportTime, setReportTime] = useState(); //getting report Time
+  const[icon, setIcon] =useState();
+  const[description, setDescription] = useState()
 
   //making europa date format
   let time = new Date(reportTime);
@@ -31,6 +33,9 @@ const Weather = () => {
           "&key=077ee4f3e79f488c837d01b1ed2532aa&include=minutely"
       );
       const dataJson = await response.json();
+      setIcon(dataJson.data[0].weather.icon);
+      setDescription(dataJson.data[0].weather.description)
+
       dataJson.data.map((city) => {
         setReportData(city.city_name);
         setTemp(city.temp);
@@ -49,6 +54,7 @@ const Weather = () => {
     <div  className="container">
       <div>
         <h1 className="mb-5">Weather Reports</h1>
+        <div><img alt="icon" src={`https://www.weatherbit.io/static/img/icons/${icon}.png`}></img> {description}</div>
         <InputGroup className="mb-3">
           {/*texting city name */}
           <FormControl
@@ -69,7 +75,6 @@ const Weather = () => {
           </InputGroup.Append>
         </InputGroup>
       </div>
-
       {/* showing report information */}
       <table className="table mt-5" >
         <thead>
